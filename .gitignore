@@ -1,0 +1,23 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackmigration
+pom.xml.versionsBackup
+release.properties
+
+# OryxOS 运行时工作目录（含 SQLite 数据库、记忆、日志、会话）
+.oryxos/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
