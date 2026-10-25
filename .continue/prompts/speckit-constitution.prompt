@@ -1,0 +1,19 @@
+---
+name: speckit-constitution
+description: 执行 Spec Kit 项目原则（宪章）流程
+invokable: true
+---
+
+请执行当前项目的 Spec Kit constitution 流程。
+
+执行方式：
+1. 列出 .specify/commands 目录，找到 constitution 对应的流程文件。
+2. 完整读取该流程文件，并严格按照其中的指令执行。
+3. 将我本条消息附加的内容作为该流程的用户输入。
+   如果流程中存在 $ARGUMENTS 等参数占位符，请将其理解为这些附加内容。
+4. 根据流程要求读取模板、现有项目原则及相关项目文件。
+5. 缺少必要信息时先向我提问，不要编造项目约束。
+6. 如果对应流程文件不存在，停止并报告，不要自行模拟流程。
+7. 只执行本阶段，不自动进入 specify、plan 或 implement。
+
+完成后列出修改的文件和需要我确认的事项。
