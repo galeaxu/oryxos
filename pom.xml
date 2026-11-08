@@ -47,7 +47,7 @@
         <spring-ai-alibaba.version>1.0.0.4</spring-ai-alibaba.version>
 
         <!-- 第2步：第3步结构化日志（JSON）使用的 encoder -->
-        <logstash-logback-encoder.version>7.4.7</logstash-logback-encoder.version>
+        <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
 
         <!-- 质量插件版本（第7/8步使用），此处统一集中管理 -->
         <spotless.version>2.43.0</spotless.version>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  第3步：结构化日志配置
+  - 默认 / dev：彩色可读 console（便于本地开发调试）
+  - prod：JSON 输出（LogstashEncoder），携带 MDC 中的 traceId，便于集中式日志采集
+  统一使用 SLF4J，禁止 System.out / printStackTrace 直接输出。
+-->
+<configuration>
+
+    <!-- Spring Boot 提供的默认转换器 -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <property name="APP_NAME" value="${spring.application.name:-oryxos}"/>
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [${APP_NAME}] [%X{traceId:-}] %cyan(%logger{36}) - %msg%n"/>
+
+    <!-- 开发环境：彩色控制台 -->
+    <appender name="CONSOLE_COLOR" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 生产环境：JSON（LogstashEncoder） -->
+    <appender name="JSON" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"app":"${APP_NAME}"}</customFields>
+            <includeMdc>true</includeMdc>
+            <includeContext>false</includeContext>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 默认（dev）：彩色控制台 -->
+    <springProfile name="!prod">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE_COLOR"/>
+        </root>
+    </springProfile>
+
+    <!-- 生产：JSON 输出 -->
+    <springProfile name="prod">
+        <root level="INFO">
+            <appender-ref ref="JSON"/>
+        </root>
+    </springProfile>
+
+</configuration>
