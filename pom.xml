@@ -42,10 +42,33 @@
         <sqlite-jdbc.version>3.46.1.3</sqlite-jdbc.version>
         <hibernate-community-dialects.version>6.5.3.Final</hibernate-community-dialects.version>
         <springdoc.version>2.6.0</springdoc.version>
+
+        <!-- 第2步：Spring AI Alibaba BOM（统一管理 spring-ai-alibaba 相关依赖版本） -->
+        <spring-ai-alibaba.version>1.0.0.4</spring-ai-alibaba.version>
+
+        <!-- 第2步：第3步结构化日志（JSON）使用的 encoder -->
+        <logstash-logback-encoder.version>7.4.7</logstash-logback-encoder.version>
+
+        <!-- 质量插件版本（第7/8步使用），此处统一集中管理 -->
+        <spotless.version>2.43.0</spotless.version>
+        <pmd.version>3.25.0</pmd.version>
+        <p3c.version>2.1.1</p3c.version>
+        <spotbugs.version>4.8.6.4</spotbugs.version>
+        <findsecbugs.version>1.13.0</findsecbugs.version>
+        <checkstyle.version>3.6.0</checkstyle.version>
+        <dependency-check.version>10.0.4</dependency-check.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-bom</artifactId>
+                <version>${spring-ai-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- OryxOS internal modules -->
             <dependency>
                 <groupId>com.oryxos</groupId>
@@ -113,6 +136,11 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
