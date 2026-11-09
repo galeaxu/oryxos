@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: oryxos
+  # JDK 21 虚拟线程：Spring MVC 请求处理使用虚拟线程，单机扛高并发（不引入响应式）
+  threads:
+    virtual:
+      enabled: true
   datasource:
     url: jdbc:sqlite:${user.dir}/.oryxos/oryxos.db
     driver-class-name: org.sqlite.JDBC
