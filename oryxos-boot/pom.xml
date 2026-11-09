@@ -53,6 +53,16 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- 监控：Actuator + Prometheus（版本由 Spring Boot BOM 统一管理） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+
         <!-- 结构化日志（prod profile 输出 JSON）；版本由父 pom dependencyManagement 管理 -->
         <dependency>
             <groupId>net.logstash.logback</groupId>

@@ -15,3 +15,17 @@ spring:
         dialect: org.hibernate.community.dialect.SQLiteDialect
         format_sql: false
 
+# 监控：Actuator 端点与 Prometheus 指标
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  metrics:
+    tags:
+      application: oryxos
+
