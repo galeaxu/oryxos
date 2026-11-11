@@ -1,5 +1,6 @@
 package com.oryxos.web.controller;
 
+import com.oryxos.web.ApiResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,22 +22,22 @@ import java.util.Map;
 public class SessionApiController {
 
     @PostMapping
-    public Map<String, Object> createSession(@RequestBody(required = false) Map<String, Object> body) {
+    public ApiResponse<Map<String, Object>> createSession(@RequestBody(required = false) Map<String, Object> body) {
         // TODO(US-5): 生成 session_id（channel + user + profile），落库后返回。
-        return Map.of("sessionId", "placeholder-session-id");
+        return ApiResponse.ok(Map.of("sessionId", "placeholder-session-id"));
     }
 
     @PostMapping("/{id}/messages")
-    public Map<String, Object> sendMessage(@PathVariable String id,
-                                           @RequestBody Map<String, Object> body) {
+    public ApiResponse<Map<String, Object>> sendMessage(@PathVariable String id,
+                                                        @RequestBody Map<String, Object> body) {
         // TODO(US-5): 调 AgentService.process 走完整 ReActLoop 后返回响应。
-        return Map.of("sessionId", id, "reply", "placeholder");
+        return ApiResponse.ok(Map.of("sessionId", id, "reply", "placeholder"));
     }
 
     @GetMapping("/{id}")
-    public Map<String, Object> getHistory(@PathVariable String id) {
+    public ApiResponse<Map<String, Object>> getHistory(@PathVariable String id) {
         // TODO(US-5): 从 SessionRepository 读取 messages_json 并返回。
-        return Map.of("sessionId", id, "messages", java.util.List.of());
+        return ApiResponse.ok(Map.of("sessionId", id, "messages", java.util.List.of()));
     }
 
     @DeleteMapping("/{id}")

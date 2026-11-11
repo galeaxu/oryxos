@@ -1,5 +1,6 @@
 package com.oryxos.web.controller;
 
+import com.oryxos.web.ApiResponse;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,9 +17,9 @@ import java.util.Map;
 public class AgentApiController {
 
     @PostMapping("/{name}/invoke")
-    public Map<String, Object> invoke(@PathVariable String name,
-                                      @RequestBody Map<String, Object> body) {
+    public ApiResponse<Map<String, Object>> invoke(@PathVariable String name,
+                                                   @RequestBody Map<String, Object> body) {
         // TODO(US-5): 按 name 取 Profile，构造临时 Session，调 AgentService.process 后返回。
-        return Map.of("agent", name, "reply", "placeholder");
+        return ApiResponse.ok(Map.of("agent", name, "reply", "placeholder"));
     }
 }

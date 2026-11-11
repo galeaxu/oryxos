@@ -1,5 +1,6 @@
 package com.oryxos.web.controller;
 
+import com.oryxos.web.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,15 +15,15 @@ import java.util.Map;
 public class SystemApiController {
 
     @GetMapping("/health")
-    public Map<String, Object> health() {
-        return Map.of("status", "UP");
+    public ApiResponse<Map<String, Object>> health() {
+        return ApiResponse.ok(Map.of("status", "UP"));
     }
 
     @GetMapping("/info")
-    public Map<String, Object> info() {
-        return Map.of(
+    public ApiResponse<Map<String, Object>> info() {
+        return ApiResponse.ok(Map.of(
                 "name", "OryxOS",
                 "version", "1.0.0-SNAPSHOT"
-        );
+        ));
     }
 }

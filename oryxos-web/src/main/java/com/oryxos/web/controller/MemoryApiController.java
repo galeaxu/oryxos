@@ -1,5 +1,6 @@
 package com.oryxos.web.controller;
 
+import com.oryxos.web.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +15,8 @@ import java.util.Map;
 public class MemoryApiController {
 
     @GetMapping
-    public Map<String, Object> get() {
+    public ApiResponse<Map<String, Object>> get() {
         // TODO(US-5): 从 MemoryService 读取长期记忆并返回。
-        return Map.of("content", "");
+        return ApiResponse.ok(Map.of("content", ""));
     }
 }
